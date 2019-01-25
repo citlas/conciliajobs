@@ -1,14 +1,71 @@
-/* 
-probando
-*/
 
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
 *{
-    background-color: #e4f1fe;
-    color: #3a539b;
-    .App {
-        h1 {
-            color: rgb(46, 204, 113);
-        }
-    }
+    font-family: 'Comfortaa', cursive;
 }
+
+
+.home{
+    width: 80%;
+    margin: auto;
+    //head
+    .head{
+        //menu
+        .top{
+            background-color: white;
+            .content{
+                background-color: white;
+                .menu{
+                    display: flex;
+                    justify-content: flex-end;
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                    
+                    
+                    li{
+                        display: inline;
+                        float: left;
+                        padding: 10px;
+                    }
+                    li a{
+                        text-decoration: none;
+                        color: gray;
+                    }
+                    li a:hover{
+                        color: black;
+                    }
+                }
+            }
+            
+        }//termina menu
+        h1, h2 {
+            text-align: center;
+        }
+
+
+    }//termina head
+
+    .listado{
+        text-align: center;
+        table, th, td {
+            border: 1px solid black;
+          }
+          table {
+            table-layout: fixed;
+            border-collapse: collapse;
+            margin: 15px auto;
+            width: 100%;
+            td{
+                padding: 4%;
+            }
+          }
+    }
+    p{
+        text-align: center;
+    }
+
+    
+}//termina home
+
 

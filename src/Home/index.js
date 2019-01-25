@@ -11,11 +11,13 @@ class Home extends Component {
         super(props);
     
         this.state = {
-            items:[]
+            items:[],
+            provincia: '',
+            //alreadySelectedProvincia: false
         }
         this.loadData = this.loadData.bind(this);
         this.getJobDate = this.getJobDate.bind(this);
-
+        this.selectProvincia = this.selectProvincia.bind(this);
       }
 
       
@@ -30,13 +32,18 @@ class Home extends Component {
         console.log('comp did update ', this.state.items)
         //console.log('comp did update un dato', this.state.items[0].ciudad)
         var fechaok = this.state.items[0].fecha.seconds
-        console.log('fechaok ', fechaok)
+        //console.log('fechaok ', fechaok)
         var date = new Date(fechaok*1000);
-        console.log('fecha es', new Date(this.state.items[0].fecha.seconds*1000))
+        //console.log('fecha es', new Date(this.state.items[0].fecha.seconds*1000))
       }
 
-      loadData(){
-        db.collection('puestos').onSnapshot(snapshot=>{
+      loadData(provincia){
+        let db = firebase.firestore().collection('puestos') 
+          if(provincia){
+             db = db.where("Ciudad","==",provincia)
+            //this.setState({alreadySelectedProvincia: true})
+          }
+        db.onSnapshot(snapshot=>{
             const items = []
             snapshot.forEach(item => {
                 //items[item.id] = item.data()
@@ -60,7 +67,7 @@ class Home extends Component {
       }
       getJobDate(key){
         var fechaok = this.state.items[key].fecha.seconds
-        console.log('fechaok ', fechaok)
+        //console.log('fechaok ', fechaok)
         var date = new Date(fechaok*1000);
         var day =date.getDate();
         var months_arr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -70,6 +77,18 @@ class Home extends Component {
         //console.log('fecha es', new Date(this.state.items[item].fecha.seconds*1000))
       }
   
+      selectProvincia(e){
+    
+        let targetProvincia = e.target.value
+        this.setState({provincia: targetProvincia});
+        
+        this.loadData(targetProvincia)
+    
+        if(targetProvincia == 'choose'){
+        console.log( window.location.reload())
+        }
+        }
+
   render() {
       const {items} = this.state;
       
@@ -78,9 +97,17 @@ class Home extends Component {
         <div className="home">
           
            <Head />
-           <p>Estas buscando un trabajo que te deje tiempo para ti y los tuyos? Mira lo que hemos encontrado para ti!</p>
-           <Listado />
-           <table>
+           <p>Estas buscando un trabajo que te deje tiempo para ti y los tuyos? <br></br> Mira lo que hemos encontrado para ti!</p>
+          
+           <div className="listado">
+            <p value="provincia">Prueba a filtrar por provincia</p> 
+            <select id='selectingProvincia' onChange={this.selectProvincia}>
+                <option value="choose">Escoge una!</option>
+                <option value="Barcelona">Barcelona</option>
+                <option value="Madrid">Madrid</option>
+                <option value="Bilbao">Bilbao</option>
+            </select>
+            <table>
                <thead>
                <tr>
                    <th>Ciudad</th>
@@ -102,6 +129,9 @@ class Home extends Component {
                    )) : null } 
                </tbody>
            </table>
+            </div>
+          
+           
         </div>
 
         

@@ -1,9 +1,43 @@
-/* 
-probando
-*/
+@import url("https://fonts.googleapis.com/css?family=Comfortaa");
 * {
-  background-color: burlywood;
+  font-family: 'Comfortaa', cursive; }
 
-}
+.home {
+  width: 80%;
+  margin: auto; }
+  .home .head .top {
+    background-color: white; }
+    .home .head .top .content {
+      background-color: white; }
+      .home .head .top .content .menu {
+        display: flex;
+        justify-content: flex-end;
+        list-style-type: none;
+        margin: 0;
+        padding: 0; }
+        .home .head .top .content .menu li {
+          display: inline;
+          float: left;
+          padding: 10px; }
+        .home .head .top .content .menu li a {
+          text-decoration: none;
+          color: gray; }
+        .home .head .top .content .menu li a:hover {
+          color: black; }
+  .home .head h1, .home .head h2 {
+    text-align: center; }
+  .home .listado {
+    text-align: center; }
+    .home .listado table, .home .listado th, .home .listado td {
+      border: 1px solid black; }
+    .home .listado table {
+      table-layout: fixed;
+      border-collapse: collapse;
+      margin: 15px auto;
+      width: 100%; }
+      .home .listado table td {
+        padding: 4%; }
+  .home p {
+    text-align: center; }
 
 /*# sourceMappingURL=main.css.map */

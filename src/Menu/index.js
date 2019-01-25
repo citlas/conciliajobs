@@ -10,9 +10,9 @@ function Menu(){
 
       <div className="content">  
         <ul className="menu">
-          <li className="menuItem">Home </li>
-          <li className="menuItem">FAQ</li>
-          <li className="menuItem">Contacto</li>
+          <li className="menuItem"><a href="#home">Home</a></li>
+          <li className="menuItem"><a href="#faq">FAQ</a></li>
+          <li className="menuItem"><a href="#contacto">Contacto</a></li>
         </ul>
         
       </div>

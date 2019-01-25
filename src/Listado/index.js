@@ -4,9 +4,7 @@ class Listado extends Component {
   
   render() {
     return (
-        <div className="listado">
-          <p>Prueba a filtrar por provincia</p>                  
-        </div>
+        <p>listado</p>
 
         
     

@@ -5,7 +5,7 @@ class Head extends Component {
   
   render() {
     return (
-        <div className="home">
+        <div className="head">
           
           <Menu  /> 
           <h1>Concilia Jobs</h1>
